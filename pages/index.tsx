@@ -1,14 +1,23 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { currentThemeState, ThemeFlag } from "@/store/theme";
+import { theme } from "@/styles/ThemeStyles";
+import { MainContainer } from "@/styles/MainStyle";
+import { ThemeProvider } from "styled-components";
+import { ChildProps } from "@/types/db";
 
-const inter = Inter({ subsets: ["latin"] });
+const Home = ({ children }: ChildProps) => {
+  const [currentTheme, setCurrentTheme] = useRecoilState(currentThemeState);
 
-export default function Home() {
   return (
-    <>
-      <div>안녕</div>
-    </>
+    <ThemeProvider
+      theme={
+        currentTheme === ThemeFlag.dark ? theme.darkTheme : theme.lightTheme
+      }
+    >
+      <MainContainer></MainContainer>
+    </ThemeProvider>
   );
-}
+};
+
+export default Home;
