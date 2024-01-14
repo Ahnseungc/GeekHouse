@@ -4,19 +4,28 @@ import { Editor } from "@monaco-editor/react";
 import NightTheme from "monaco-themes/themes/GitHub Dark.json";
 import LightTheme from "monaco-themes/themes/GitHub Light.json";
 import { MonacoEditorProps } from "@/types/db";
+import { useCallback } from "react";
+
+interface type {
+  name: string;
+  Theme: Object;
+}
 
 const MonacoEditor = ({ currentTheme }: MonacoEditorProps) => {
   const monaco = useMonaco();
+  const setTheme = useCallback(
+    (Name: string, Theme: object) => {
+      monaco.editor.defineTheme(Name, Theme);
+      monaco.editor.setTheme(Name);
+    },
+    [monaco]
+  );
 
   useEffect(() => {
     if (!monaco) return;
-
     monaco?.languages.typescript.javascriptDefaults.setEagerModelSync(true);
-    monaco.editor.defineTheme("dark", NightTheme);
-    monaco.editor.defineTheme("light", LightTheme);
-
-    monaco.editor.setTheme("dark");
-    monaco.editor.setTheme("light");
+    setTheme("dark", NightTheme);
+    setTheme("light", LightTheme);
   }, [monaco]);
 
   return (
@@ -27,6 +36,14 @@ const MonacoEditor = ({ currentTheme }: MonacoEditorProps) => {
         width="50vw"
         defaultLanguage="javascript"
         defaultValue="// some comment"
+        options={{
+          fontSize: 15,
+          minimap: { enabled: false },
+          scrollbar: {
+            vertical: "auto",
+            horizontal: "auto",
+          },
+        }}
       />
     </>
   );

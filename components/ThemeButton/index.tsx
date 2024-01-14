@@ -4,11 +4,11 @@ import { ThemeButtonSwitch } from "./style";
 import { ThemeFlag } from "@/store/theme";
 
 type Props = {
-  currentTheme: ThemeFlag;
+  currenttheme: ThemeFlag;
 };
 
-const ThemeButton = ({ currentTheme }: Props) => {
-  return <ThemeButtonSwitch currentTheme={currentTheme}></ThemeButtonSwitch>;
+const ThemeButton = ({ currenttheme }: Props) => {
+  return <ThemeButtonSwitch currentTheme={currenttheme}></ThemeButtonSwitch>;
 };
 
 export default ThemeButton;

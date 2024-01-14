@@ -18,7 +18,7 @@ const ThemeToggle = () => {
 
   return (
     <ToggleBox onClick={onChangeThemeHandler}>
-      <ThemeButton currentTheme={currentTheme} />
+      <ThemeButton currenttheme={currentTheme} />
     </ToggleBox>
   );
 };
