@@ -5,7 +5,9 @@ import { ThemeFlag, currentThemeState } from "@/store/theme";
 import { useCallback } from "react";
 
 const ThemeToggle = () => {
-  const [currentTheme, setCurrentTheme] = useRecoilState(currentThemeState);
+  const [currentTheme, setCurrentTheme] =
+    useRecoilState<number>(currentThemeState);
+
   const onChangeThemeHandler = useCallback(() => {
     if (currentTheme === ThemeFlag.dark) {
       setCurrentTheme(ThemeFlag.light);

@@ -6,11 +6,6 @@ import LightTheme from "monaco-themes/themes/GitHub Light.json";
 import { MonacoEditorProps } from "@/types/db";
 import { useCallback } from "react";
 
-interface type {
-  name: string;
-  Theme: Object;
-}
-
 const MonacoEditor = ({ currentTheme }: MonacoEditorProps) => {
   const monaco = useMonaco();
   const setTheme = useCallback(

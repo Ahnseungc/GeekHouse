@@ -10,8 +10,8 @@ import MonacoEditor from "@/components/MonacoEditor";
 import { ChildProps } from "@/types/db";
 
 const Home = ({ children }: ChildProps) => {
-  const [currentTheme, setCurrentTheme] = useRecoilState(currentThemeState);
-
+  const [currentTheme, setCurrentTheme] =
+    useRecoilState<number>(currentThemeState);
   useEffect(() => {
     if (!localStorage.getItem("dark_mode")) return;
     const localTheme = Number(localStorage.getItem("dark_mode"));
